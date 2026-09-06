@@ -29,12 +29,14 @@ Client-side Android-friendly PWA for a back-seat tablet and front-seat parent co
 
 - Published to https://github.com/fahimc/baby-link-webrtc
 - Initial implementation commit: `d8b4aaf`
+- Deployed production site: https://baby-link-webrtc.netlify.app/
 
 ## Known limitations
 
 - Signaling requires one-time QR/copy-paste exchange; the app does not yet include a signaling service.
 - TURN is not configured, so restrictive networks may fail direct WebRTC.
 - Video fixture upload and automated two-peer playback tests are not yet present.
+- Offline app-shell behavior is implemented and the production `/` and `/sw.js` endpoints respond successfully; full offline control of WebRTC is not expected because WebRTC requires a live peer connection.
 
 ## Resume point
 
