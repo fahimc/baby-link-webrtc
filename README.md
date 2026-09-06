@@ -10,6 +10,7 @@ BabyLink is a mobile-first, client-side PWA for family journeys. One device acts
 - Optional two-way audio/video call using the same peer connection.
 - Responsive layout designed for Android Chrome and later Capacitor packaging.
 - Install metadata and a lightweight production service worker for app-shell caching.
+- Netlify configuration with SPA fallback and service-worker update headers.
 
 ## Run locally
 
@@ -19,6 +20,8 @@ npm run dev
 ```
 
 Then open the displayed local URL in two browser tabs or two devices on a reachable network.
+
+For a production build, run `npm run build` and serve `dist/` from any static host. Netlify is configured with `netlify.toml` and `public/_redirects`.
 
 ## Pairing flow
 
@@ -35,6 +38,7 @@ The first version deliberately keeps signaling client-only: SDP/ICE data is exch
 - Both devices need camera/microphone permission for calling. The tablet should enable call access once during setup if remote call start is desired.
 - STUN is included for basic connectivity. A TURN service should be configured for reliable calls on restrictive mobile networks.
 - Browser background suspension and auto-answer permissions are Android/browser constraints. A Capacitor Android wrapper is the recommended next step for dependable car use, wake-lock behavior, and trusted-device call handling.
+- Offline mode applies after the app shell has loaded once while online. The service worker caches the compiled app shell and uses network-first navigation so new deployments can update cleanly; selected local video files remain device-local and are not cached by the service worker.
 - The app is intended for passenger or parked use; interaction should never distract the driver.
 
 ## Next production steps
