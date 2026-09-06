@@ -71,9 +71,10 @@ export function waitForIceGatheringComplete(peer: RTCPeerConnection) {
 
 export function createPeerConnection() {
   return new RTCPeerConnection({
-    // STUN helps when the devices are not on the same Wi-Fi. A TURN server can
-    // be added later for restrictive mobile networks.
-    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }],
+    // LAN-only mode: host candidates keep pairing and media local to the shared
+    // Wi-Fi/hotspot. No public STUN or TURN service is contacted.
+    iceServers: [],
+    iceCandidatePoolSize: 0,
   });
 }
 

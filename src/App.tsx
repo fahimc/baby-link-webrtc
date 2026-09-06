@@ -92,7 +92,7 @@ function Header({ eyebrow, title, onBack }: { eyebrow: string; title: string; on
       {onBack ? (
         <button className="icon-button" onClick={onBack} aria-label="Go back">↩</button>
       ) : (
-        <span className="privacy-chip">Private by design</span>
+      <span className="privacy-chip">LAN only</span>
       )}
     </header>
   );
@@ -111,7 +111,7 @@ function Home({ onChoose }: { onChoose: (screen: Screen) => void }) {
           <p>Play local videos on the tablet, control them from the front, and start a gentle two-way call whenever you need to.</p>
           <div className="hero-pills">
             <span>Works with large local files</span>
-            <span>Direct WebRTC connection</span>
+            <span>Direct local-network connection</span>
           </div>
         </div>
         <div className="hero-illustration" aria-hidden="true">
@@ -133,7 +133,7 @@ function Home({ onChoose }: { onChoose: (screen: Screen) => void }) {
           <div className="role-icon">⌁</div><div><span className="role-kicker">FRONT SEAT</span><h3>Parent controller</h3><p>Control playback and talk to the tablet remotely.</p></div><span className="arrow">→</span>
         </button>
       </div>
-      <p className="footnote"><span className="lock-symbol">⌑</span> No account. No video upload. Pair devices directly for the session.</p>
+      <p className="footnote"><span className="lock-symbol">⌑</span> No account. No video upload. Same Wi-Fi or hotspot required.</p>
     </div>
   );
 }
@@ -341,7 +341,7 @@ function TabletApp({ onBack }: { onBack: () => void }) {
   return <div className="workspace-page">
     <Header eyebrow="Back seat" title="Tablet player" onBack={onBack} />
     <div className="page-padding workspace-content">
-      <div className="workspace-intro"><div><span className="eyebrow mint">TABLET MODE</span><h1>Ready for a little adventure?</h1><p>Load videos onto this device. The controller will see the library once paired.</p></div><StatusPill status={status} /></div>
+      <div className="workspace-intro"><div><span className="eyebrow mint">TABLET MODE · LAN ONLY</span><h1>Ready for a little adventure?</h1><p>Load videos onto this device. Put both devices on the same Wi-Fi or hotspot before pairing.</p></div><StatusPill status={status} /></div>
       <div className="tablet-layout">
         <section className="player-card panel-card">
           <div className="video-stage">
@@ -424,7 +424,7 @@ function ControllerApp({ onBack }: { onBack: () => void }) {
   return <div className="workspace-page controller-page">
     <Header eyebrow="Front seat" title="Parent controller" onBack={onBack} />
     <div className="page-padding workspace-content">
-      <div className="workspace-intro"><div><span className="eyebrow purple">CONTROLLER MODE</span><h1>Everything is one tap away.</h1><p>Choose a video on the tablet, adjust playback, or open a call from the front seat.</p></div><StatusPill status={status} /></div>
+      <div className="workspace-intro"><div><span className="eyebrow purple">CONTROLLER MODE · LAN ONLY</span><h1>Everything is one tap away.</h1><p>Choose a video on the tablet, adjust playback, or open a call from the front seat. Both devices must share the same local network.</p></div><StatusPill status={status} /></div>
       <div className="controller-layout">
         <section className="remote-card panel-card"><div className="remote-card-top"><div><span className="eyebrow">TABLET PREVIEW</span><h2>{status === 'connected' ? 'Back seat is ready' : 'Waiting for the tablet'}</h2></div><div className="remote-live-dot"><span /> direct link</div></div><div className="remote-video-stage"><video ref={remoteVideoRef} autoPlay playsInline /><div className="remote-placeholder"><div className="tablet-mini-icon">▣</div><strong>{status === 'connected' ? 'Select a video below' : 'Pair the tablet to begin'}</strong><span>{status === 'connected' ? 'The tablet plays the file locally.' : 'No camera or video leaves the tablet.'}</span></div>{status === 'connected' && <div className="remote-call-badge">{callActive ? '● Call active' : 'Video preview'}</div>}</div><div className="remote-actions"><button className="primary-button" onClick={callActive ? endCall : startCall} disabled={status !== 'connected'}>{callActive ? 'End two-way call' : '⌁ Start two-way call'}</button><button className="secondary-button" onClick={enableCall} disabled={callEnabled || status !== 'connected'}>{callEnabled ? 'Call access ready' : 'Enable camera & mic'}</button></div><video ref={localVideoRef} muted autoPlay playsInline className="hidden-video" /></section>
         <aside className="controller-side">

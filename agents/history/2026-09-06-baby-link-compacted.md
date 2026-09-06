@@ -10,7 +10,7 @@ Client-side Android-friendly PWA for a back-seat tablet and front-seat parent co
 - Pair with compressed WebRTC SDP/ICE tokens shown as QR codes and copy/paste. This preserves a backend-free MVP.
 - Use a WebRTC data channel for control messages and the same peer connection for optional audio/video calling.
 - Keep video playback local to the tablet using object URLs; never transfer the large file to the controller.
-- Include STUN for basic connectivity; TURN and ephemeral signaling remain production follow-ups.
+- Use LAN-only WebRTC with `iceServers: []`; no public STUN/TURN service is contacted.
 
 ## Completed
 
@@ -34,10 +34,10 @@ Client-side Android-friendly PWA for a back-seat tablet and front-seat parent co
 ## Known limitations
 
 - Signaling requires one-time QR/copy-paste exchange; the app does not yet include a signaling service.
-- TURN is not configured, so restrictive networks may fail direct WebRTC.
+- Devices must share the same reachable Wi-Fi/hotspot; LAN-only mode will not work across separate networks.
 - Video fixture upload and automated two-peer playback tests are not yet present.
 - Offline app-shell behavior is implemented and the production `/` and `/sw.js` endpoints respond successfully; full offline control of WebRTC is not expected because WebRTC requires a live peer connection.
 
 ## Resume point
 
-Configure GitHub Pages or another static host, add an ephemeral signaling/TURN deployment, then package the app with Capacitor for Android car use.
+Keep the static Netlify deployment, add automated same-LAN reconnection testing, and consider persistent tablet file handles for offline library restore.
