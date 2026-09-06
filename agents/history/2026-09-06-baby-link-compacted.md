@@ -30,6 +30,7 @@ Client-side Android-friendly PWA for a back-seat tablet and front-seat parent co
 - Published to https://github.com/fahimc/baby-link-webrtc
 - Initial implementation commit: `d8b4aaf`
 - Deployed production site: https://baby-link-webrtc.netlify.app/
+- LAN-only release commit: `3a9fa07`, redeployed to the production site.
 
 ## Known limitations
 
