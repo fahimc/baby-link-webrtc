@@ -25,6 +25,11 @@ Client-side Android-friendly PWA for a back-seat tablet and front-seat parent co
 - `npm run build` passes.
 - Manual browser verification completed with two local tabs: QR/clipboard pairing reached Connected on both sides.
 
+## Release
+
+- Published to https://github.com/fahimc/baby-link-webrtc
+- Initial implementation commit: `d8b4aaf`
+
 ## Known limitations
 
 - Signaling requires one-time QR/copy-paste exchange; the app does not yet include a signaling service.
