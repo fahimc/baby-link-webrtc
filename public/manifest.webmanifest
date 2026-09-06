@@ -1,0 +1,15 @@
+{
+  "name": "BabyLink",
+  "short_name": "BabyLink",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b1224",
+  "theme_color": "#111b34",
+  "description": "Private local video control and two-way calling for family journeys.",
+  "icons": [{
+    "src": "/icon.svg",
+    "sizes": "any",
+    "type": "image/svg+xml",
+    "purpose": "any maskable"
+  }]
+}
